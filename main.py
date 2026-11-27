@@ -232,83 +232,89 @@ def draw():
     # ---- Lead story: oil ----
     box(buf, 32, 164, 960, 252, RED)
     kicker(buf, 52, 186, "LEAD STORY - MIDDLE EAST - OIL", RED)
-    draw_text(buf, 52, 210, "OIL SHOCK", 7, INK)
-    draw_wrapped(buf, 52, 268, "HOUTHIS CLAIM STRIKE ON SAUDI RAS TANURA REFINERY", 3, NAVY, 560)
-    draw_wrapped(buf, 52, 330, "BRENT CRUDE JUMPS 3.5% TO $94.61 A BARREL. RIYADH SAYS IT SHOT DOWN FOUR DRONES OVER THE SITE. THE CLAIM HAS NOT BEEN INDEPENDENTLY CONFIRMED.", 2, INK, 560)
+    draw_text(buf, 52, 210, "OIL SHOCK", 8, INK)
+    draw_wrapped(buf, 52, 280, "HOUTHIS CLAIM STRIKE ON SAUDI RAS TANURA REFINERY", 3, NAVY, 560)
+    draw_wrapped(buf, 52, 338, "BRENT JUMPS TO $94.61. RIYADH SHOT DOWN 4 DRONES. CLAIM NOT CONFIRMED.", 3, INK, 560)
     # Oil illustration, right side.
     fill_rect(buf, 660, 184, 312, 212, CREAM)
     rect_outline(buf, 660, 184, 312, 212, INK, 2)
-    # Derrick.
-    draw_line(buf, 700, 380, 730, 220, INK, 5)
-    draw_line(buf, 770, 380, 740, 220, INK, 5)
-    draw_line(buf, 708, 330, 762, 330, INK, 4)
-    draw_line(buf, 716, 285, 754, 285, INK, 4)
-    draw_line(buf, 700, 380, 770, 330, INK, 3)
-    draw_line(buf, 770, 380, 708, 330, INK, 3)
-    # Flame.
-    fill_circle(buf, 800, 240, 26, ORANGE)
-    fill_circle(buf, 800, 250, 16, GOLD_L)
-    fill_circle(buf, 800, 258, 8, WHITE)
+    # Derrick, taller and thicker than v1.
+    draw_line(buf, 695, 388, 728, 212, INK, 6)
+    draw_line(buf, 765, 388, 742, 212, INK, 6)
+    draw_line(buf, 704, 336, 758, 336, INK, 4)
+    draw_line(buf, 712, 288, 750, 288, INK, 4)
+    draw_line(buf, 695, 388, 758, 336, INK, 3)
+    draw_line(buf, 765, 388, 704, 336, INK, 3)
+    # Flame, bigger than v1.
+    fill_circle(buf, 800, 232, 34, ORANGE)
+    fill_circle(buf, 800, 244, 22, GOLD_L)
+    fill_circle(buf, 800, 254, 10, WHITE)
     # Price tag.
     fill_rect(buf, 812, 300, 148, 76, NAVY)
     draw_text(buf, 822, 310, "$94.61", 3, WHITE)
-    draw_text(buf, 822, 344, "+3.5%", 2, GOLD_L)
-    draw_text(buf, 888, 344, "BRENT", 2, GOLD_L)
+    draw_text(buf, 822, 344, "+3.5%", 3, GOLD_L)
 
     # ---- Row 2: tariffs + AI markets ----
     box(buf, 32, 432, 464, 220, TEAL)
     kicker(buf, 52, 452, "TRADE - WASHINGTON", TEAL)
     draw_text(buf, 52, 476, "NEW US TARIFFS", 4, INK)
-    draw_wrapped(buf, 52, 516, "TRUMP PROPOSES DUTIES ON 14 PARTNERS: CHINA 20%, EU AND JAPAN 15%. HEARING SET FOR 25 JANUARY.", 2, INK, 424)
-    # Bars: CHINA 20, EU 15, VIETNAM 35 (if talks fail). Bars sit
-    # below the body text so nothing overlaps.
-    bx, by = 60, 628
+    draw_wrapped(buf, 52, 516, "14 PARTNERS HIT. CHINA 20%. EU, JAPAN 15%.", 3, INK, 424)
+    # Bars: CHINA 20, EU 15, VIETNAM 35 (if talks fail). Country
+    # labels sit inside the bars, clear of the body text.
+    bx, by = 70, 640
     for i, (label, val, col) in enumerate(
             [("CHINA", 20, TEAL), ("EU", 15, BLUE), ("VIETNAM", 35, RED)]):
-        x = bx + i * 140
-        hgt = int(val * 1.4)
-        fill_rect(buf, x, by - hgt, 44, hgt, col)
-        draw_text(buf, x, by + 3, label, 1, INK)
+        x = bx + i * 145
+        hgt = int(val * 1.8)
+        fill_rect(buf, x, by - hgt, 60, hgt, col)
+        draw_text(buf, x + 8, by - 12, label, 1, WHITE)
 
     box(buf, 528, 432, 464, 220, BLUE)
     kicker(buf, 548, 452, "MARKETS - AI", BLUE)
     draw_text(buf, 548, 476, "NVIDIA ON WATCH", 4, INK)
-    draw_wrapped(buf, 548, 516, "S&P PUTS NVIDIA ON DOWNGRADE WATCH OVER BOARD FEARS. AI SELLOFF HITS STOCKS. TAIWAN SHARES FALL 1,927 POINTS.", 2, INK, 424)
-    # Falling chart.
-    draw_line(buf, 560, 580, 620, 600, RED, 4)
-    draw_line(buf, 620, 600, 680, 585, RED, 4)
-    draw_line(buf, 680, 585, 740, 620, RED, 4)
-    draw_line(buf, 740, 620, 800, 610, RED, 4)
-    draw_line(buf, 800, 610, 860, 640, RED, 4)
-    draw_line(buf, 860, 640, 860, 620, RED, 4)
-    draw_line(buf, 860, 640, 840, 640, RED, 4)
-    draw_text(buf, 880, 622, "DOWN", 2, RED)
+    draw_wrapped(buf, 548, 516, "S&P: DOWNGRADE WATCH. AI SELLOFF. TAIWAN -1,927.", 3, INK, 424)
+    # Falling chart, thicker and steeper than v1.
+    draw_line(buf, 560, 592, 630, 608, RED, 5)
+    draw_line(buf, 630, 608, 700, 602, RED, 5)
+    draw_line(buf, 700, 602, 770, 622, RED, 5)
+    draw_line(buf, 770, 622, 840, 638, RED, 5)
+    draw_line(buf, 840, 638, 872, 646, RED, 5)
+    draw_line(buf, 872, 646, 872, 626, RED, 5)
+    draw_line(buf, 872, 646, 852, 646, RED, 5)
+    draw_text(buf, 888, 628, "DOWN", 2, RED)
 
     # ---- Row 3: space, parade, sport ----
     box(buf, 32, 668, 304, 220, NAVY2)
     kicker(buf, 48, 688, "SPACE", NAVY2)
     draw_wrapped(buf, 48, 712, "FIRST PAKISTANI ASTRONAUT", 3, INK, 272)
-    draw_wrapped(buf, 48, 772, "MUHAMMAD ZEESHAN ALI TO FLY TO CHINA'S TIANGONG STATION ON SHENZHOU-24.", 2, INK, 272)
-    # Small planet, top-right corner clear of the text.
-    fill_circle(buf, 312, 694, 14, NAVY2)
-    fill_circle(buf, 308, 690, 5, WHITE)
-    draw_line(buf, 292, 700, 332, 688, GOLD_L, 3)
+    draw_wrapped(buf, 48, 772, "ALI TO FLY TO TIANGONG ON SHENZHOU-24.", 2, INK, 272)
+    # Rocket lying flat, big and centred in the strip below the text.
+    fill_circle(buf, 92, 846, 12, ORANGE)
+    fill_circle(buf, 92, 846, 6, GOLD_L)
+    fill_rect(buf, 104, 832, 140, 28, WHITE)
+    rect_outline(buf, 104, 832, 140, 28, INK, 2)
+    draw_line(buf, 244, 832, 278, 846, INK, 3)
+    draw_line(buf, 244, 860, 278, 846, INK, 3)
+    fill_circle(buf, 190, 846, 9, BLUE)
+    draw_line(buf, 120, 860, 104, 878, INK, 3)
+    draw_line(buf, 120, 832, 104, 814, INK, 3)
 
     box(buf, 360, 668, 304, 220, GOLD)
     kicker(buf, 376, 688, "USA - HOLIDAY", GOLD)
     draw_wrapped(buf, 376, 712, "100TH MACY'S PARADE", 3, INK, 272)
-    draw_wrapped(buf, 376, 772, "NEW YORK MARKS A CENTURY OF THE THANKSGIVING PARADE. US MARKETS CLOSED FOR THE HOLIDAY.", 2, INK, 272)
-    # Balloon, bottom-right corner below the text.
-    fill_circle(buf, 628, 862, 16, RED)
-    fill_circle(buf, 628, 862, 8, WHITE)
+    draw_wrapped(buf, 376, 772, "A CENTURY OF THANKSGIVING. US MARKETS CLOSED.", 2, INK, 272)
+    # Big balloon with 100 on it, centred below the text.
+    fill_circle(buf, 512, 852, 26, RED)
+    draw_text(buf, 494, 844, "100", 2, WHITE)
 
     box(buf, 688, 668, 304, 220, GREEN)
     kicker(buf, 704, 688, "SPORT - INDIA", GREEN)
     draw_wrapped(buf, 704, 712, "15-YEAR-OLD MAKES HISTORY", 3, INK, 272)
-    draw_wrapped(buf, 704, 772, "SOORYAVANSHI HITS 204 OFF 53 BALLS, A WORLD-RECORD LIST A DOUBLE CENTURY. INDIA ALSO MARKS 18 YEARS SINCE 26/11.", 2, INK, 272)
-    # Cricket ball, bottom-right corner below the text.
-    fill_circle(buf, 962, 864, 14, RED)
-    fill_circle(buf, 958, 860, 4, WHITE)
+    draw_wrapped(buf, 704, 772, "204 OFF 53 BALLS. WORLD RECORD. INDIA MARKS 18 YEARS SINCE 26/11.", 2, INK, 272)
+    # Big bat and ball in the strip below the text.
+    draw_line(buf, 740, 880, 820, 848, INK, 7)
+    fill_circle(buf, 940, 862, 16, RED)
+    draw_line(buf, 928, 852, 952, 872, WHITE, 2)
 
     # ---- Footer: also today ----
     fill_rect(buf, 0, 904, W, 120, NAVY)
